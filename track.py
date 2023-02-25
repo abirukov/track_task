@@ -31,9 +31,3 @@ def main(command_name: str, project: str, count_minutes: int, days: int):
 
 if __name__ == '__main__':
     main()
-
-# Залогировать 15 минут на проект learn
-# $ python track.py track --project=learn 15
-
-# показать статистику по проекту learn за последние 5 дней
-# $ python track.py stat --project=learn --days=5
