@@ -1,8 +1,8 @@
 """Added projects and time_records
 
-Revision ID: ff3b89cbe296
+Revision ID: 2bc03f1a9232
 Revises: 
-Create Date: 2023-02-24 21:23:40.241058
+Create Date: 2023-02-24 22:31:24.113558
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ff3b89cbe296'
+revision = '2bc03f1a9232'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,6 +25,8 @@ def upgrade() -> None:
     )
     op.create_table('time_records',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('datetime', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('count_minutes', sa.Integer(), nullable=False),
     sa.Column('project_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['project_id'], ['projects.id'], ),
     sa.PrimaryKeyConstraint('id')
