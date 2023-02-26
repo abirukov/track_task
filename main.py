@@ -1,18 +1,19 @@
 import click
 
-from project import Project
+from task_track.project import Project
+from task_track.utils import print_stats
 
 
 def track(project_title: str, count_minutes: int) -> None:
     project = Project(title=project_title)
-    if not project.is_set():
-        project.add()
-    project.add_time_record(count_minutes)
+    if not project.is_created():
+        project.create()
+    project.create_time_record_in_db(count_minutes)
 
 
 def stat(project_title: str, statistic_days: int) -> None:
     project = Project(title=project_title)
-    project.print_stats(statistic_days)
+    print_stats(project, statistic_days)
 
 
 @click.command()
