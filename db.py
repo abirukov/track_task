@@ -4,9 +4,9 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 
 from config import get_config
 
-config = get_config()
-engine = create_engine(config.sqlalchemy_url)
-db_session = scoped_session(sessionmaker(bind=engine))
+CONFIG = get_config()
+ENGINE = create_engine(CONFIG.sqlalchemy_url)
+DB_SESSION = scoped_session(sessionmaker(bind=ENGINE))
 
 Base = declarative_base()
-Base.query = db_session.query_property()
+Base.query = DB_SESSION.query_property()
