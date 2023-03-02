@@ -18,7 +18,7 @@ def print_stats(stats: list[dict | None]) -> None:
         print(f"{daily_date_and_stat['date']} {format_time(daily_date_and_stat['count_minutes'])}")
 
 
-def get_stats_by_days(project: Project, statistic_days: int) -> list[tuple[str, int] | None]:
+def get_stats_by_days(project: Project, statistic_days: int) -> list[dict | None]:
     date_from = datetime.datetime.today() + datetime.timedelta(days=-statistic_days)
     date_to = datetime.datetime.today()
     return project.get_count_minutes_by_days(date_from, date_to)
