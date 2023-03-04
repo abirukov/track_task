@@ -1,5 +1,5 @@
-import os, sys
-sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__), '..')))
+# import os, sys
+# sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__), '..')))
 from task_track.db_models import Base
 
 from logging.config import fileConfig
