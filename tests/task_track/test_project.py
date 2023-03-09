@@ -2,7 +2,6 @@ import datetime
 from types import NoneType
 
 import pytest
-from pytest_lazyfixture import lazy_fixture
 
 from db import DB_SESSION
 from task_track.daily_minutes import DailyMinutes
