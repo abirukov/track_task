@@ -1,5 +1,5 @@
 ifneq (,$(wildcard .env))
-	$(info Found .env file.)
+$(info Found .env file.)
 	include .env
 	export
 endif

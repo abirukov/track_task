@@ -3,9 +3,10 @@ import datetime
 import pytest
 
 from db import DB_SESSION
+from task_track.daily_minutes import DailyMinutes
+from task_track.db_models import Project as ProjectModel, TimeRecord
 from task_track.project import Project
 from task_track.utils import format_time, get_stats_by_days
-from task_track.db_models import Project as ProjectModel, TimeRecord
 
 
 @pytest.mark.parametrize(
@@ -20,7 +21,7 @@ def test__format_time(minutes: int, expected: str):
 
 
 def test__get_stats_by_days(project: Project):
-    expected = [{"date": datetime.datetime.now().strftime("%d.%m"), "count_minutes": 20}]
+    expected = [DailyMinutes(date=datetime.datetime.now().strftime("%d.%m"), count_minutes=20)]
     project.save_to_db()
     project.create_time_record_in_db(count_minutes=20)
     assert get_stats_by_days(project=project, statistic_days=5) == expected
