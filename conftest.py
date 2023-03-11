@@ -19,6 +19,7 @@ def unsaved_project():
 def mock_objects(project):
     project.save_to_db()
     project.create_time_record_in_db(count_minutes=20)
+    yield
     time_records = TimeRecord.__table__.delete()
     DB_SESSION.execute(time_records)
     DB_SESSION.commit()
